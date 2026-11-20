@@ -1,5 +1,6 @@
 import { Card, HyperlinkButton, Icon, InfoBar, Text, type IconName } from '../../lib';
-import { Section, useApp } from '../Example';
+import { useApp } from '../context';
+import { Section } from '../Example';
 
 const TILES: Array<{ key: string; icon: IconName; title: string; text: string }> = [
   { key: 'input', icon: 'accept', title: 'Basic input', text: 'Button, CheckBox, RadioButtons, ToggleSwitch, Slider, ComboBox, RatingControl, ColorPicker.' },

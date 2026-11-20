@@ -1,21 +1,5 @@
-import { createContext, useContext, type ReactNode } from 'react';
-import { Text, type Backdrop, type PaneDisplayMode, type ThemeMode } from '../lib';
-
-export interface Settings {
-  theme: ThemeMode;
-  accent: string;
-  backdrop: Backdrop;
-  paneMode: PaneDisplayMode;
-}
-
-export interface AppContextValue {
-  settings: Settings;
-  update: (patch: Partial<Settings>) => void;
-  navigate: (key: string) => void;
-}
-
-export const AppContext = createContext<AppContextValue | null>(null);
-export const useApp = () => useContext(AppContext)!;
+import type { ReactNode } from 'react';
+import { Text } from '../lib';
 
 export function Page({ title, description, children }: { title: string; description?: ReactNode; children: ReactNode }) {
   return (

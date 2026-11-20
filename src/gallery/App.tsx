@@ -4,6 +4,7 @@ import {
   Button,
   Frame,
   InfoBadge,
+  InfoBar,
   NavigationView,
   PersonPicture,
   ScrollView,
@@ -13,7 +14,8 @@ import {
   useTheme,
   type NavigationViewItem,
 } from '../lib';
-import { AppContext, type Settings } from './Example';
+import { AppContext, type Settings } from './context';
+import { SEGOE_DOWNLOAD_URL, hasSegoe, isReminderDismissed, setReminderDismissed } from './font';
 import { BasicInputPage } from './pages/BasicInput';
 import { CollectionsPage } from './pages/Collections';
 import { DateTimePage } from './pages/DateTime';
@@ -138,13 +140,22 @@ export function App() {
     if (!PAGES[key]) return;
     setHistory((h) => (h[h.length - 1] === key ? h : [...h, key]));
   };
+  // Remind people without the Windows UI font to install it, until they dismiss it.
+  const [fontInstalled] = useState(hasSegoe);
+  const [reminder, setReminder] = useState(() => !fontInstalled && !isReminderDismissed());
+
   const ctx = useMemo(
     () => ({
       settings,
       update: (patch: Partial<Settings>) => setSettings((s) => ({ ...s, ...patch })),
       navigate,
+      fontInstalled,
+      showFontReminder: () => {
+        setReminderDismissed(false);
+        setReminder(true);
+      },
     }),
-    [settings],
+    [settings, fontInstalled],
   );
 
   return (
@@ -205,10 +216,34 @@ export function App() {
           selectedKey={current}
           onSelectionChange={navigate}
         >
-          {/* Keyed by page so each page starts at the top. */}
-          <ScrollView key={current} className="g-scroll">
-            <Frame pageKey={current}>{PAGES[current]?.()}</Frame>
-          </ScrollView>
+          <div className="g-content">
+            {reminder && (
+              <div className="g-banner">
+                <InfoBar
+                  className="g-callout"
+                  title="Install Segoe UI Variable for the real look"
+                  message="This device does not have the Windows UI font, so text is shown in its system font. Download the font from Microsoft, install it, then restart your browser."
+                  action={
+                    <Button
+                      appearance="accent"
+                      icon="download"
+                      onClick={() => window.open(SEGOE_DOWNLOAD_URL, '_blank', 'noopener')}
+                    >
+                      Get the font
+                    </Button>
+                  }
+                  onClose={() => {
+                    setReminderDismissed(true);
+                    setReminder(false);
+                  }}
+                />
+              </div>
+            )}
+            {/* Keyed by page so each page starts at the top. */}
+            <ScrollView key={current} className="g-scroll">
+              <Frame pageKey={current}>{PAGES[current]?.()}</Frame>
+            </ScrollView>
+          </div>
         </NavigationView>
       </ThemeProvider>
     </AppContext.Provider>

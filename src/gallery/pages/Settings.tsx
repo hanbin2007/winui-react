@@ -1,4 +1,5 @@
 import {
+  Button,
   ComboBox,
   RadioButton,
   RadioButtons,
@@ -9,12 +10,14 @@ import {
   type PaneDisplayMode,
   type ThemeMode,
 } from '../../lib';
-import { Page, Section, useApp } from '../Example';
+import { useApp } from '../context';
+import { Page, Section } from '../Example';
+import { SEGOE_DOWNLOAD_URL } from '../font';
 
 const ACCENTS = ['#0078D4', '#0099BC', '#00B294', '#107C10', '#FFB900', '#F7630C', '#E81123', '#E3008C', '#8764B8', '#744DA9', '#515C6B', '#7A7574'];
 
 export function SettingsPage() {
-  const { settings, update } = useApp();
+  const { settings, update, fontInstalled, showFontReminder } = useApp();
   return (
     <Page title="Settings">
       <Section>Appearance & behaviour</Section>
@@ -77,6 +80,23 @@ export function SettingsPage() {
             value={settings.paneMode}
             onValueChange={(v) => update({ paneMode: v as PaneDisplayMode })}
           />
+        </SettingsCard>
+
+        <SettingsCard
+          icon="font"
+          header="Windows UI font"
+          description={
+            fontInstalled
+              ? 'Segoe UI is installed. Text looks the way it does on Windows.'
+              : "Segoe UI Variable is not installed. Text is shown in this device's system font."
+          }
+        >
+          {!fontInstalled && (
+            <Button appearance="accent" onClick={() => window.open(SEGOE_DOWNLOAD_URL, '_blank', 'noopener')}>
+              Get the font
+            </Button>
+          )}
+          <Button onClick={showFontReminder}>Show reminder</Button>
         </SettingsCard>
       </div>
 
