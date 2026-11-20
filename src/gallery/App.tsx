@@ -114,7 +114,7 @@ export function App() {
   const [settings, setSettings] = useState<Settings>({
     theme: 'system',
     accent: '#0078D4',
-    backdrop: 'mica',
+    backdrop: 'micaAlt',
     paneMode: 'auto',
   });
   const [history, setHistory] = useState<string[]>(() => [pageFromHash()]);
