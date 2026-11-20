@@ -208,7 +208,6 @@ textarea.wui-textbox__input {
   box-shadow: var(--wui-shadow-flyout);
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-width: thin;
 }
 .wui-option {
   position: relative;

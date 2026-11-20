@@ -19,55 +19,58 @@ const TILES: Array<{ key: string; icon: IconName; title: string; text: string }>
 export function HomePage() {
   const { navigate } = useApp();
   return (
-    <div className="g-page">
-      <div className="g-hero">
-        <Text variant="caption" tone="secondary" block>
-          An unofficial React UI framework
-        </Text>
-        <Text variant="titleLarge">WinUI React Gallery</Text>
-        <Text tone="secondary" block style={{ maxWidth: 640, marginTop: 8 }}>
-          Every control here is a React component styled and animated after WinUI 3: the same theme
-          tokens, the same geometry, the same motion. Pick a category to try them.
-        </Text>
-      </div>
+    <div className="g-home">
+      <div className="g-hero-bg" />
+      <div className="g-page">
+        <div className="g-hero">
+          <Text variant="caption" tone="secondary" block>
+            An unofficial React UI framework
+          </Text>
+          <Text variant="titleLarge">WinUI React Gallery</Text>
+          <Text tone="secondary" block style={{ maxWidth: 640, marginTop: 8 }}>
+            Every control here is a React component styled and animated after WinUI 3: the same
+            theme tokens, the same geometry, the same motion. Pick a category to try them.
+          </Text>
+        </div>
 
-      <InfoBar
-        title="Tip"
-        message="Use the button in the title bar to switch between light and dark, and Settings to change the accent colour and backdrop."
-        closable={false}
-        action={<HyperlinkButton onClick={() => navigate('settings')}>Open settings</HyperlinkButton>}
-      />
+        <InfoBar
+          title="Tip"
+          message="Use the button in the title bar to switch between light and dark, and Settings to change the accent colour and backdrop."
+          closable={false}
+          action={<HyperlinkButton onClick={() => navigate('settings')}>Open settings</HyperlinkButton>}
+        />
 
-      <Section>Browse the controls</Section>
-      <div className="g-tiles">
-        {TILES.map((t) => (
-          <Card
-            key={t.key}
-            clickable
-            className="g-tile wui-focusable"
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate(t.key)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                navigate(t.key);
-              }
-            }}
-          >
-            <span className="g-tile__icon">
-              <Icon name={t.icon} size={20} />
-            </span>
-            <span>
-              <Text variant="bodyStrong" block>
-                {t.title}
-              </Text>
-              <Text variant="caption" tone="secondary" block style={{ marginTop: 2 }}>
-                {t.text}
-              </Text>
-            </span>
-          </Card>
-        ))}
+        <Section>Browse the controls</Section>
+        <div className="g-tiles">
+          {TILES.map((t) => (
+            <Card
+              key={t.key}
+              clickable
+              className="g-tile wui-focusable"
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate(t.key)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  navigate(t.key);
+                }
+              }}
+            >
+              <span className="g-tile__icon">
+                <Icon name={t.icon} size={20} />
+              </span>
+              <span>
+                <Text variant="bodyStrong" block>
+                  {t.title}
+                </Text>
+                <Text variant="caption" tone="secondary" block style={{ marginTop: 2 }}>
+                  {t.text}
+                </Text>
+              </span>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

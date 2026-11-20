@@ -154,9 +154,13 @@
 .wui-nav__scroll {
   flex: 1;
   min-height: 0;
+}
+.wui-nav__scroll > .wui-scrollview__viewport {
   overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
+}
+/* Compact pane: keep the scroll indicator inside the visible 48px rail. */
+.wui-nav__pane[data-open='false'] .wui-nav__scroll {
+  width: var(--wui-nav-compact-width);
 }
 .wui-nav__footer {
   flex: none;

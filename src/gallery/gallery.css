@@ -138,23 +138,30 @@ body {
 }
 
 /* Home */
-.g-hero {
+.g-home {
   position: relative;
-  margin: -28px -36px 28px;
-  padding: 56px 36px 40px;
-  overflow: hidden;
 }
-.g-hero::before {
-  content: '';
+.g-home > .g-page {
+  position: relative;
+}
+.g-hero {
+  margin: -28px 0 28px;
+  padding: 56px 0 40px;
+}
+/* The hero wash spans the whole content area, not just the page column. */
+.g-hero-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  pointer-events: none;
   background:
     radial-gradient(60% 120% at 12% 0%, color-mix(in srgb, var(--wui-accent-light2) 55%, transparent), transparent 70%),
     radial-gradient(50% 120% at 88% 10%, rgba(255, 140, 200, 0.35), transparent 70%),
     radial-gradient(60% 120% at 55% 110%, rgba(120, 220, 190, 0.3), transparent 70%);
-  -webkit-mask-image: linear-gradient(#000 30%, transparent);
-  mask-image: linear-gradient(#000 30%, transparent);
-  z-index: -1;
+  -webkit-mask-image: linear-gradient(#000 25%, transparent);
+  mask-image: linear-gradient(#000 25%, transparent);
 }
 .g-tiles {
   display: grid;

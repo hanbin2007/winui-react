@@ -328,3 +328,72 @@
     transition-duration: 1ms !important;
   }
 }
+
+/* ---------- Native scrollers ----------
+ * Surfaces that scroll natively (not through ScrollView) get a slim bar with no
+ * track, close to WinUI's, instead of the platform's full-width scroll bar. */
+.wui-root
+  :is(
+    .wui-dropdown,
+    .wui-menu,
+    .wui-flyout,
+    .wui-dialog__body,
+    .wui-nav__body,
+    .wui-tabview__content,
+    textarea.wui-textbox__input
+  )::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.wui-root
+  :is(
+    .wui-dropdown,
+    .wui-menu,
+    .wui-flyout,
+    .wui-dialog__body,
+    .wui-nav__body,
+    .wui-tabview__content,
+    textarea.wui-textbox__input
+  )::-webkit-scrollbar-track,
+.wui-root
+  :is(
+    .wui-dropdown,
+    .wui-menu,
+    .wui-flyout,
+    .wui-dialog__body,
+    .wui-nav__body,
+    .wui-tabview__content,
+    textarea.wui-textbox__input
+  )::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.wui-root
+  :is(
+    .wui-dropdown,
+    .wui-menu,
+    .wui-flyout,
+    .wui-dialog__body,
+    .wui-nav__body,
+    .wui-tabview__content,
+    textarea.wui-textbox__input
+  )::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 5px;
+  background-color: var(--wui-control-strong-fill-default);
+  background-clip: content-box;
+}
+@supports not selector(::-webkit-scrollbar) {
+  .wui-root
+    :is(
+      .wui-dropdown,
+      .wui-menu,
+      .wui-flyout,
+      .wui-dialog__body,
+      .wui-nav__body,
+      .wui-tabview__content,
+      textarea.wui-textbox__input
+    ) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--wui-control-strong-fill-default) transparent;
+  }
+}

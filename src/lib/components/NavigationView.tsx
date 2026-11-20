@@ -10,6 +10,7 @@ import {
 import { Icon, renderIcon, type IconSource } from '../Icon';
 import { cx, useControllable, useStretchIndicator } from '../utils';
 import { ToolTip } from './Flyout';
+import { ScrollView } from './Layout';
 import { MenuFlyout, MenuFlyoutItem, MenuFlyoutSubItem } from './MenuFlyout';
 
 export interface NavigationViewItem {
@@ -401,11 +402,11 @@ export function NavigationView({
                   </button>
                 </div>
               )}
-              <div className="wui-nav__scroll">
+              <ScrollView className="wui-nav__scroll">
                 {items.map((it) => (
                   <NavItem key={it.key} item={it} depth={0} />
                 ))}
-              </div>
+              </ScrollView>
               <div className="wui-nav__footer">
                 {paneFooter}
                 {footerItems.map((it) => (

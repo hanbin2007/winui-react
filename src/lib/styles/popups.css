@@ -36,7 +36,6 @@
   box-shadow: var(--wui-shadow-flyout);
   color: var(--wui-text-primary);
   overflow-y: auto;
-  scrollbar-width: thin;
   user-select: none;
   -webkit-user-select: none;
 }
