@@ -17,7 +17,7 @@ import { SEGOE_DOWNLOAD_URL } from '../font';
 const ACCENTS = ['#0078D4', '#0099BC', '#00B294', '#107C10', '#FFB900', '#F7630C', '#E81123', '#E3008C', '#8764B8', '#744DA9', '#515C6B', '#7A7574'];
 
 export function SettingsPage() {
-  const { settings, update, fontInstalled, showFontReminder } = useApp();
+  const { settings, update, navigate, fontInstalled, showFontReminder } = useApp();
   return (
     <Page title="Settings">
       <Section>Appearance & behaviour</Section>
@@ -96,7 +96,14 @@ export function SettingsPage() {
               Get the font
             </Button>
           )}
-          <Button onClick={showFontReminder}>Show reminder</Button>
+          <Button
+            onClick={() => {
+              showFontReminder();
+              navigate('home');
+            }}
+          >
+            Show reminder
+          </Button>
         </SettingsCard>
       </div>
 

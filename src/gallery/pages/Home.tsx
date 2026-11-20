@@ -1,5 +1,6 @@
-import { Card, HyperlinkButton, Icon, InfoBar, Text, type IconName } from '../../lib';
+import { Button, Card, HyperlinkButton, Icon, InfoBar, Text, type IconName } from '../../lib';
 import { useApp } from '../context';
+import { SEGOE_DOWNLOAD_URL } from '../font';
 import { Section } from '../Example';
 
 const TILES: Array<{ key: string; icon: IconName; title: string; text: string }> = [
@@ -18,7 +19,7 @@ const TILES: Array<{ key: string; icon: IconName; title: string; text: string }>
 ];
 
 export function HomePage() {
-  const { navigate } = useApp();
+  const { navigate, fontReminder, dismissFontReminder } = useApp();
   return (
     <div className="g-home">
       <div className="g-hero-bg" />
@@ -33,6 +34,18 @@ export function HomePage() {
             theme tokens, the same geometry, the same motion. Pick a category to try them.
           </Text>
         </div>
+
+        <InfoBar
+          open={fontReminder}
+          onClose={dismissFontReminder}
+          severity="warning"
+          style={{ marginBottom: 8 }}
+          title="Segoe UI Variable is not installed"
+          message="Text is shown in this device's system font. Install the Windows UI font from Microsoft, then restart your browser, to see the gallery as it looks on Windows."
+          action={
+            <Button onClick={() => window.open(SEGOE_DOWNLOAD_URL, '_blank', 'noopener')}>Get the font</Button>
+          }
+        />
 
         <InfoBar
           title="Tip"
