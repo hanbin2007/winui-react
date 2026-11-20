@@ -1,0 +1,290 @@
+/*
+ * Design tokens. Names follow the WinUI 3 theme resources
+ * (TextFillColorPrimary -> --wui-text-primary, and so on).
+ * Light is the default; dark overrides follow.
+ */
+.wui-root {
+  color-scheme: light;
+
+  /* Accent palette (ThemeProvider overrides these inline for a custom accent) */
+  --wui-accent-base: #0078d4;
+  --wui-accent-light1: #1890f1;
+  --wui-accent-light2: #60cdff;
+  --wui-accent-light3: #99ebff;
+  --wui-accent-dark1: #005fb8;
+  --wui-accent-dark2: #004275;
+  --wui-accent-dark3: #002642;
+
+  /* Typography */
+  --wui-font: 'Segoe UI Variable Text', 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system,
+    'Helvetica Neue', 'Microsoft YaHei UI', sans-serif;
+  --wui-font-display: 'Segoe UI Variable Display', 'Segoe UI Variable', 'Segoe UI', system-ui,
+    -apple-system, 'Helvetica Neue', 'Microsoft YaHei UI', sans-serif;
+  --wui-font-small: 'Segoe UI Variable Small', 'Segoe UI Variable', 'Segoe UI', system-ui,
+    -apple-system, 'Helvetica Neue', 'Microsoft YaHei UI', sans-serif;
+  --wui-font-mono: 'Cascadia Code', 'Cascadia Mono', Consolas, 'SF Mono', Menlo, monospace;
+
+  /* Geometry */
+  --wui-radius-control: 4px;
+  --wui-radius-overlay: 8px;
+  --wui-control-height: 32px;
+
+  /* Motion */
+  --wui-dur-faster: 83ms;
+  --wui-dur-fast: 167ms;
+  --wui-dur-normal: 250ms;
+  --wui-dur-slow: 333ms;
+  --wui-ease-fast-out-slow-in: cubic-bezier(0, 0, 0, 1);
+  --wui-ease-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --wui-ease-accelerate: cubic-bezier(0.9, 0.1, 1, 0.2);
+  --wui-ease-soft-out: cubic-bezier(1, 1, 0, 1);
+
+  /* Text */
+  --wui-text-primary: rgba(0, 0, 0, 0.894);
+  --wui-text-secondary: rgba(0, 0, 0, 0.62);
+  --wui-text-tertiary: rgba(0, 0, 0, 0.447);
+  --wui-text-disabled: rgba(0, 0, 0, 0.361);
+  --wui-text-on-accent-primary: #ffffff;
+  --wui-text-on-accent-secondary: rgba(255, 255, 255, 0.7);
+  --wui-text-on-accent-disabled: #ffffff;
+  --wui-text-on-accent-selected: #ffffff;
+
+  /* Accent fills */
+  --wui-accent-default: var(--wui-accent-dark1);
+  --wui-accent-secondary: color-mix(in srgb, var(--wui-accent-dark1) 90%, transparent);
+  --wui-accent-tertiary: color-mix(in srgb, var(--wui-accent-dark1) 80%, transparent);
+  --wui-accent-disabled: rgba(0, 0, 0, 0.217);
+  --wui-accent-selected-text-bg: var(--wui-accent-base);
+  --wui-accent-text-primary: var(--wui-accent-dark2);
+  --wui-accent-text-secondary: var(--wui-accent-dark3);
+  --wui-accent-text-tertiary: var(--wui-accent-dark1);
+  --wui-accent-text-disabled: rgba(0, 0, 0, 0.361);
+
+  /* Control fills */
+  --wui-control-fill-default: rgba(255, 255, 255, 0.7);
+  --wui-control-fill-secondary: rgba(249, 249, 249, 0.5);
+  --wui-control-fill-tertiary: rgba(249, 249, 249, 0.3);
+  --wui-control-fill-disabled: rgba(249, 249, 249, 0.3);
+  --wui-control-fill-transparent: rgba(255, 255, 255, 0);
+  --wui-control-fill-input-active: #ffffff;
+  --wui-control-strong-fill-default: rgba(0, 0, 0, 0.447);
+  --wui-control-strong-fill-disabled: rgba(0, 0, 0, 0.317);
+  --wui-control-solid-fill-default: #ffffff;
+  --wui-subtle-fill-transparent: rgba(0, 0, 0, 0);
+  --wui-subtle-fill-secondary: rgba(0, 0, 0, 0.037);
+  --wui-subtle-fill-tertiary: rgba(0, 0, 0, 0.024);
+  --wui-subtle-fill-disabled: rgba(0, 0, 0, 0);
+  --wui-control-alt-fill-transparent: rgba(255, 255, 255, 0);
+  --wui-control-alt-fill-secondary: rgba(0, 0, 0, 0.024);
+  --wui-control-alt-fill-tertiary: rgba(0, 0, 0, 0.058);
+  --wui-control-alt-fill-quarternary: rgba(0, 0, 0, 0.092);
+  --wui-control-alt-fill-disabled: rgba(255, 255, 255, 0);
+  --wui-control-on-image-fill-default: rgba(255, 255, 255, 0.79);
+
+  /* Strokes */
+  --wui-control-stroke-default: rgba(0, 0, 0, 0.058);
+  --wui-control-stroke-secondary: rgba(0, 0, 0, 0.162);
+  --wui-control-stroke-on-accent-default: rgba(255, 255, 255, 0.08);
+  --wui-control-stroke-on-accent-secondary: rgba(0, 0, 0, 0.4);
+  --wui-control-stroke-on-accent-tertiary: rgba(0, 0, 0, 0.217);
+  --wui-control-strong-stroke-default: rgba(0, 0, 0, 0.446);
+  --wui-control-strong-stroke-disabled: rgba(0, 0, 0, 0.217);
+  --wui-card-stroke-default: rgba(0, 0, 0, 0.058);
+  --wui-card-stroke-default-solid: #ebebeb;
+  --wui-divider-stroke-default: rgba(0, 0, 0, 0.058);
+  --wui-surface-stroke-default: rgba(117, 117, 117, 0.4);
+  --wui-surface-stroke-flyout: rgba(0, 0, 0, 0.058);
+  --wui-focus-stroke-outer: rgba(0, 0, 0, 0.894);
+  --wui-focus-stroke-inner: rgba(255, 255, 255, 0.7);
+
+  /* Elevation borders (the 1px gradient edge on controls) */
+  --wui-control-elevation-border: linear-gradient(
+    to top,
+    var(--wui-control-stroke-secondary) 0,
+    var(--wui-control-stroke-secondary) 1px,
+    var(--wui-control-stroke-default) 3px
+  );
+  --wui-circle-elevation-border: linear-gradient(
+    to bottom,
+    var(--wui-control-stroke-default) 50%,
+    var(--wui-control-stroke-secondary) 70%
+  );
+  --wui-accent-control-elevation-border: linear-gradient(
+    to top,
+    var(--wui-control-stroke-on-accent-secondary) 0,
+    var(--wui-control-stroke-on-accent-secondary) 1px,
+    var(--wui-control-stroke-on-accent-default) 3px
+  );
+  --wui-text-control-elevation-border: linear-gradient(
+    to top,
+    var(--wui-control-strong-stroke-default) 0,
+    var(--wui-control-strong-stroke-default) 1px,
+    var(--wui-control-stroke-default) 1px
+  );
+
+  /* Backgrounds */
+  --wui-card-bg-default: rgba(255, 255, 255, 0.7);
+  --wui-card-bg-secondary: rgba(246, 246, 246, 0.5);
+  --wui-card-bg-tertiary: #ffffff;
+  --wui-smoke-fill-default: rgba(0, 0, 0, 0.3);
+  --wui-layer-fill-default: rgba(255, 255, 255, 0.5);
+  --wui-layer-fill-alt: #ffffff;
+  --wui-layer-on-acrylic-fill-default: rgba(255, 255, 255, 0.25);
+  --wui-layer-on-mica-base-alt-default: rgba(255, 255, 255, 0.7);
+  --wui-layer-on-mica-base-alt-secondary: rgba(0, 0, 0, 0.04);
+  --wui-layer-on-mica-base-alt-tertiary: #f9f9f9;
+  --wui-solid-bg-base: #f3f3f3;
+  --wui-solid-bg-base-alt: #dadada;
+  --wui-solid-bg-secondary: #eeeeee;
+  --wui-solid-bg-tertiary: #f9f9f9;
+  --wui-solid-bg-quarternary: #ffffff;
+
+  /* Materials */
+  --wui-mica-base: #f3f3f3;
+  --wui-mica-alt-base: #dadada;
+  --wui-mica-tint: rgba(243, 243, 243, 0.8);
+  --wui-mica-alt-tint: rgba(218, 218, 218, 0.8);
+  --wui-acrylic-tint: rgba(252, 252, 252, 0.72);
+  --wui-acrylic-fallback: #f9f9f9;
+  --wui-acrylic-base-tint: rgba(243, 243, 243, 0.82);
+  --wui-acrylic-noise-opacity: 0.02;
+
+  /* System (signal) colours */
+  --wui-system-attention: var(--wui-accent-default);
+  --wui-system-success: #0f7b0f;
+  --wui-system-caution: #9d5d00;
+  --wui-system-critical: #c42b1c;
+  --wui-system-neutral: rgba(0, 0, 0, 0.446);
+  --wui-system-solid-neutral: #8a8a8a;
+  --wui-system-attention-bg: rgba(246, 246, 246, 0.5);
+  --wui-system-success-bg: #dff6dd;
+  --wui-system-caution-bg: #fff4ce;
+  --wui-system-critical-bg: #fde7e9;
+  --wui-system-neutral-bg: rgba(0, 0, 0, 0.024);
+  --wui-system-solid-attention-bg: #f7f7f7;
+  --wui-system-solid-neutral-bg: #f3f3f3;
+
+  /* Shadows */
+  --wui-shadow-tooltip: 0 4px 8px rgba(0, 0, 0, 0.14);
+  --wui-shadow-flyout: 0 8px 16px rgba(0, 0, 0, 0.14);
+  --wui-shadow-dialog: 0 32px 64px rgba(0, 0, 0, 0.1876), 0 2px 21px rgba(0, 0, 0, 0.1474);
+  --wui-shadow-card: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --wui-shadow-window: 0 32px 64px rgba(0, 0, 0, 0.28), 0 2px 21px rgba(0, 0, 0, 0.22);
+
+  /* Caption (window) buttons */
+  --wui-caption-close-hover: #c42b1c;
+  --wui-caption-close-pressed: rgba(196, 43, 28, 0.9);
+}
+
+.wui-root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --wui-text-primary: #ffffff;
+  --wui-text-secondary: rgba(255, 255, 255, 0.786);
+  --wui-text-tertiary: rgba(255, 255, 255, 0.544);
+  --wui-text-disabled: rgba(255, 255, 255, 0.363);
+  --wui-text-on-accent-primary: #000000;
+  --wui-text-on-accent-secondary: rgba(0, 0, 0, 0.5);
+  --wui-text-on-accent-disabled: rgba(255, 255, 255, 0.53);
+  --wui-text-on-accent-selected: #ffffff;
+
+  --wui-accent-default: var(--wui-accent-light2);
+  --wui-accent-secondary: color-mix(in srgb, var(--wui-accent-light2) 90%, transparent);
+  --wui-accent-tertiary: color-mix(in srgb, var(--wui-accent-light2) 80%, transparent);
+  --wui-accent-disabled: rgba(255, 255, 255, 0.158);
+  --wui-accent-text-primary: var(--wui-accent-light3);
+  --wui-accent-text-secondary: var(--wui-accent-light3);
+  --wui-accent-text-tertiary: var(--wui-accent-light2);
+  --wui-accent-text-disabled: rgba(255, 255, 255, 0.363);
+
+  --wui-control-fill-default: rgba(255, 255, 255, 0.061);
+  --wui-control-fill-secondary: rgba(255, 255, 255, 0.084);
+  --wui-control-fill-tertiary: rgba(255, 255, 255, 0.033);
+  --wui-control-fill-disabled: rgba(255, 255, 255, 0.042);
+  --wui-control-fill-transparent: rgba(255, 255, 255, 0);
+  --wui-control-fill-input-active: rgba(30, 30, 30, 0.7);
+  --wui-control-strong-fill-default: rgba(255, 255, 255, 0.544);
+  --wui-control-strong-fill-disabled: rgba(255, 255, 255, 0.247);
+  --wui-control-solid-fill-default: #454545;
+  --wui-subtle-fill-transparent: rgba(255, 255, 255, 0);
+  --wui-subtle-fill-secondary: rgba(255, 255, 255, 0.061);
+  --wui-subtle-fill-tertiary: rgba(255, 255, 255, 0.042);
+  --wui-subtle-fill-disabled: rgba(255, 255, 255, 0);
+  --wui-control-alt-fill-transparent: rgba(255, 255, 255, 0);
+  --wui-control-alt-fill-secondary: rgba(0, 0, 0, 0.1);
+  --wui-control-alt-fill-tertiary: rgba(255, 255, 255, 0.042);
+  --wui-control-alt-fill-quarternary: rgba(255, 255, 255, 0.07);
+  --wui-control-alt-fill-disabled: rgba(255, 255, 255, 0);
+  --wui-control-on-image-fill-default: rgba(28, 28, 28, 0.7);
+
+  --wui-control-stroke-default: rgba(255, 255, 255, 0.07);
+  --wui-control-stroke-secondary: rgba(255, 255, 255, 0.093);
+  --wui-control-stroke-on-accent-default: rgba(255, 255, 255, 0.08);
+  --wui-control-stroke-on-accent-secondary: rgba(0, 0, 0, 0.14);
+  --wui-control-stroke-on-accent-tertiary: rgba(0, 0, 0, 0.217);
+  --wui-control-strong-stroke-default: rgba(255, 255, 255, 0.544);
+  --wui-control-strong-stroke-disabled: rgba(255, 255, 255, 0.158);
+  --wui-card-stroke-default: rgba(0, 0, 0, 0.1);
+  --wui-card-stroke-default-solid: #1c1c1c;
+  --wui-divider-stroke-default: rgba(255, 255, 255, 0.084);
+  --wui-surface-stroke-default: rgba(117, 117, 117, 0.4);
+  --wui-surface-stroke-flyout: rgba(0, 0, 0, 0.2);
+  --wui-focus-stroke-outer: #ffffff;
+  --wui-focus-stroke-inner: rgba(0, 0, 0, 0.7);
+
+  --wui-control-elevation-border: linear-gradient(
+    to bottom,
+    var(--wui-control-stroke-secondary) 0,
+    var(--wui-control-stroke-secondary) 1px,
+    var(--wui-control-stroke-default) 3px
+  );
+  --wui-circle-elevation-border: linear-gradient(
+    to bottom,
+    var(--wui-control-stroke-secondary) 0,
+    var(--wui-control-stroke-default) 50%
+  );
+
+  --wui-card-bg-default: rgba(255, 255, 255, 0.051);
+  --wui-card-bg-secondary: rgba(255, 255, 255, 0.033);
+  --wui-card-bg-tertiary: rgba(255, 255, 255, 0.071);
+  --wui-smoke-fill-default: rgba(0, 0, 0, 0.3);
+  --wui-layer-fill-default: rgba(58, 58, 58, 0.3);
+  --wui-layer-fill-alt: rgba(255, 255, 255, 0.054);
+  --wui-layer-on-acrylic-fill-default: rgba(255, 255, 255, 0.036);
+  --wui-layer-on-mica-base-alt-default: rgba(58, 58, 58, 0.45);
+  --wui-layer-on-mica-base-alt-secondary: rgba(255, 255, 255, 0.06);
+  --wui-layer-on-mica-base-alt-tertiary: #2c2c2c;
+  --wui-solid-bg-base: #202020;
+  --wui-solid-bg-base-alt: #0a0a0a;
+  --wui-solid-bg-secondary: #1c1c1c;
+  --wui-solid-bg-tertiary: #282828;
+  --wui-solid-bg-quarternary: #2c2c2c;
+
+  --wui-mica-base: #202020;
+  --wui-mica-alt-base: #0a0a0a;
+  --wui-mica-tint: rgba(32, 32, 32, 0.9);
+  --wui-mica-alt-tint: rgba(10, 10, 10, 0.9);
+  --wui-acrylic-tint: rgba(44, 44, 44, 0.78);
+  --wui-acrylic-fallback: #2c2c2c;
+  --wui-acrylic-base-tint: rgba(32, 32, 32, 0.8);
+  --wui-acrylic-noise-opacity: 0.02;
+
+  --wui-system-success: #6ccb5f;
+  --wui-system-caution: #fce100;
+  --wui-system-critical: #ff99a4;
+  --wui-system-neutral: rgba(255, 255, 255, 0.544);
+  --wui-system-solid-neutral: #9d9d9d;
+  --wui-system-attention-bg: rgba(255, 255, 255, 0.033);
+  --wui-system-success-bg: #393d1b;
+  --wui-system-caution-bg: #433519;
+  --wui-system-critical-bg: #442726;
+  --wui-system-neutral-bg: rgba(255, 255, 255, 0.033);
+  --wui-system-solid-attention-bg: #2e2e2e;
+  --wui-system-solid-neutral-bg: #2e2e2e;
+
+  --wui-shadow-tooltip: 0 4px 8px rgba(0, 0, 0, 0.26);
+  --wui-shadow-flyout: 0 8px 16px rgba(0, 0, 0, 0.26);
+  --wui-shadow-dialog: 0 32px 64px rgba(0, 0, 0, 0.37), 0 2px 21px rgba(0, 0, 0, 0.37);
+  --wui-shadow-card: 0 2px 4px rgba(0, 0, 0, 0.13);
+  --wui-shadow-window: 0 32px 64px rgba(0, 0, 0, 0.56), 0 2px 21px rgba(0, 0, 0, 0.55);
+}

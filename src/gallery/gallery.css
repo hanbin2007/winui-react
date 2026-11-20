@@ -1,0 +1,301 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  overflow: hidden;
+  background: #202020;
+}
+
+.g-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.g-app > .wui-nav {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+.g-logo {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--wui-accent-light2), var(--wui-accent-dark1));
+}
+
+/* Page */
+.g-scroll {
+  height: 100%;
+}
+.g-page {
+  max-width: 1040px;
+  padding: 28px 36px 56px;
+}
+.g-page__desc {
+  display: block;
+  margin: 8px 0 28px;
+  max-width: 760px;
+}
+.g-section {
+  margin: 36px 0 12px;
+}
+
+/* Example */
+.g-example {
+  margin-bottom: 24px;
+}
+.g-example__title {
+  display: block;
+  margin-bottom: 4px;
+}
+.g-example__desc {
+  display: block;
+  margin-bottom: 8px;
+}
+.g-example__card {
+  margin-top: 8px;
+  border: 1px solid var(--wui-card-stroke-default);
+  border-radius: var(--wui-radius-overlay);
+  background-color: var(--wui-card-bg-default);
+  background-clip: padding-box;
+}
+.g-example__main {
+  display: flex;
+}
+.g-example__demo {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 20px;
+  min-width: 0;
+  min-height: 88px;
+  padding: 24px;
+}
+.g-example__demo[data-stack='true'] {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+.g-example__demo[data-fill='true'] {
+  display: block;
+}
+.g-example__options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: none;
+  width: 232px;
+  padding: 20px;
+  border-left: 1px solid var(--wui-card-stroke-default);
+}
+.g-example__code {
+  border-top: 1px solid var(--wui-card-stroke-default);
+}
+.g-example__code summary {
+  padding: 10px 24px;
+  font-size: 12px;
+  color: var(--wui-text-secondary);
+  cursor: default;
+  user-select: none;
+  list-style: none;
+}
+.g-example__code summary::-webkit-details-marker {
+  display: none;
+}
+.g-example__code summary:hover {
+  color: var(--wui-text-primary);
+}
+.g-example__code pre {
+  margin: 0;
+  padding: 0 24px 16px;
+  font-family: var(--wui-font-mono);
+  font-size: 12.5px;
+  line-height: 18px;
+  color: var(--wui-text-primary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.g-out {
+  font-size: 12px;
+  color: var(--wui-text-secondary);
+}
+.g-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.g-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Home */
+.g-hero {
+  position: relative;
+  margin: -28px -36px 28px;
+  padding: 56px 36px 40px;
+  overflow: hidden;
+}
+.g-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 120% at 12% 0%, color-mix(in srgb, var(--wui-accent-light2) 55%, transparent), transparent 70%),
+    radial-gradient(50% 120% at 88% 10%, rgba(255, 140, 200, 0.35), transparent 70%),
+    radial-gradient(60% 120% at 55% 110%, rgba(120, 220, 190, 0.3), transparent 70%);
+  -webkit-mask-image: linear-gradient(#000 30%, transparent);
+  mask-image: linear-gradient(#000 30%, transparent);
+  z-index: -1;
+}
+.g-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.g-tile {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  min-height: 96px;
+}
+.g-tile__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--wui-subtle-fill-secondary);
+  color: var(--wui-accent-text-tertiary);
+}
+
+/* Bits used inside demos */
+.g-swatch {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  cursor: default;
+  outline-offset: 2px;
+}
+.g-swatch[aria-pressed='true'] {
+  box-shadow:
+    0 0 0 2px var(--wui-solid-bg-quarternary),
+    0 0 0 4px var(--wui-text-primary);
+}
+.g-tilepic {
+  display: flex;
+  align-items: flex-end;
+  width: 150px;
+  height: 100px;
+  padding: 8px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.g-flip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-family: var(--wui-font-display);
+  font-size: 28px;
+  font-weight: 600;
+}
+.g-tokens {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.g-token {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+.g-token__chip {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--wui-control-stroke-secondary);
+  background-image: repeating-conic-gradient(rgba(128, 128, 128, 0.25) 0 25%, transparent 0 50%);
+  background-size: 8px 8px;
+  overflow: hidden;
+}
+.g-token__chip > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.g-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 4px;
+  width: 100%;
+}
+.g-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--wui-text-secondary);
+}
+.g-icon:hover {
+  background-color: var(--wui-subtle-fill-secondary);
+}
+.g-icon .wui-icon {
+  color: var(--wui-text-primary);
+}
+.g-material {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 110px;
+  border-radius: 8px;
+  border: 1px solid var(--wui-surface-stroke-flyout);
+  font-weight: 600;
+}
+.g-materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 4px;
+  background:
+    radial-gradient(40% 80% at 20% 20%, #3b82f6, transparent 70%),
+    radial-gradient(40% 80% at 80% 30%, #ec4899, transparent 70%),
+    radial-gradient(50% 80% at 50% 90%, #22c55e, transparent 70%), #f59e0b;
+}
+.g-window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+  border: 1px solid var(--wui-surface-stroke-default);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.g-pad {
+  padding: 16px 20px;
+}

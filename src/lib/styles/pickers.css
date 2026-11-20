@@ -1,0 +1,461 @@
+/* ================= CalendarView ================= */
+.wui-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  width: 298px;
+  border: 1px solid var(--wui-control-stroke-default);
+  border-radius: var(--wui-radius-overlay);
+  background-color: var(--wui-layer-fill-alt);
+  background-clip: padding-box;
+  color: var(--wui-text-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.wui-calendar--flyout {
+  border: 0;
+  background: none;
+}
+.wui-calendar__header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--wui-divider-stroke-default);
+}
+.wui-calendar__title {
+  flex: 1;
+  justify-content: flex-start;
+  font-weight: 600;
+  padding-left: 8px;
+}
+.wui-calendar__nav {
+  width: 32px;
+  color: var(--wui-text-secondary);
+}
+.wui-calendar__body {
+  position: relative;
+  height: 286px;
+  overflow: hidden;
+}
+.wui-calendar__view {
+  position: absolute;
+  inset: 0;
+  padding: 2px 8px 4px;
+}
+.wui-calendar__view[data-anim='next'] {
+  animation: wui-cal-next 300ms var(--wui-ease-decelerate);
+}
+.wui-calendar__view[data-anim='prev'] {
+  animation: wui-cal-prev 300ms var(--wui-ease-decelerate);
+}
+.wui-calendar__view[data-anim='zoomOut'] {
+  animation: wui-cal-zoom-out 300ms var(--wui-ease-decelerate);
+}
+.wui-calendar__view[data-anim='zoomIn'] {
+  animation: wui-cal-zoom-in 300ms var(--wui-ease-decelerate);
+}
+@keyframes wui-cal-next {
+  from {
+    transform: translateY(72px);
+    opacity: 0;
+  }
+}
+@keyframes wui-cal-prev {
+  from {
+    transform: translateY(-72px);
+    opacity: 0;
+  }
+}
+@keyframes wui-cal-zoom-out {
+  from {
+    transform: scale(1.29);
+    opacity: 0;
+  }
+}
+@keyframes wui-cal-zoom-in {
+  from {
+    transform: scale(0.84);
+    opacity: 0;
+  }
+}
+.wui-calendar__weekdays,
+.wui-calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  justify-content: center;
+}
+.wui-calendar__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.wui-calendar__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 2px;
+  padding: 0 0 1px;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  font: inherit;
+  color: var(--wui-text-primary);
+  cursor: default;
+  transition:
+    background-color var(--wui-dur-faster) linear,
+    color var(--wui-dur-faster) linear;
+}
+.wui-calendar__cell:hover {
+  background-color: var(--wui-subtle-fill-secondary);
+}
+.wui-calendar__cell:active {
+  background-color: var(--wui-subtle-fill-tertiary);
+  color: var(--wui-text-secondary);
+}
+.wui-calendar__cell[data-outside='true'] {
+  color: var(--wui-text-secondary);
+}
+.wui-calendar__cell[aria-selected='true'] {
+  box-shadow: inset 0 0 0 1px var(--wui-accent-default);
+  color: var(--wui-accent-text-primary);
+}
+.wui-calendar__cell[data-today='true'] {
+  background-color: var(--wui-accent-default);
+  color: var(--wui-text-on-accent-primary);
+}
+.wui-calendar__cell[data-today='true']:hover {
+  background-color: var(--wui-accent-secondary);
+}
+.wui-calendar__cell[data-today='true']:active {
+  background-color: var(--wui-accent-tertiary);
+  color: var(--wui-text-on-accent-secondary);
+}
+.wui-calendar__cell[data-today='true'][aria-selected='true'] {
+  box-shadow:
+    inset 0 0 0 1px var(--wui-accent-default),
+    inset 0 0 0 2px var(--wui-text-on-accent-primary);
+}
+.wui-calendar__cell:disabled {
+  color: var(--wui-text-disabled);
+  pointer-events: none;
+}
+.wui-calendar__cell:focus-visible {
+  outline: 2px solid var(--wui-focus-stroke-outer);
+  outline-offset: 1px;
+}
+.wui-calendar__grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 70px;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+.wui-calendar__grid4 .wui-calendar__cell {
+  width: 56px;
+  height: 56px;
+}
+
+/* ================= Picker buttons (CalendarDatePicker / DatePicker / TimePicker) ================= */
+.wui-picker {
+  display: inline-flex;
+  align-items: stretch;
+  min-width: 242px;
+  min-height: var(--wui-control-height);
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--wui-text-primary);
+  background-color: var(--wui-control-fill-default);
+  border-radius: var(--wui-radius-control);
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  appearance: none;
+  transition:
+    background-color var(--wui-dur-faster) linear,
+    color var(--wui-dur-faster) linear;
+}
+.wui-picker:hover {
+  background-color: var(--wui-control-fill-secondary);
+}
+.wui-picker:active,
+.wui-picker[aria-expanded='true'] {
+  background-color: var(--wui-control-fill-tertiary);
+  color: var(--wui-text-secondary);
+  --wui-elev-border: var(--wui-control-stroke-default);
+}
+.wui-picker[data-empty='true'] {
+  color: var(--wui-text-secondary);
+}
+.wui-picker:disabled {
+  background-color: var(--wui-control-fill-disabled);
+  color: var(--wui-text-disabled);
+  --wui-elev-border: var(--wui-control-stroke-default);
+  pointer-events: none;
+}
+.wui-picker__seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 10px 1px;
+  white-space: nowrap;
+}
+.wui-picker__seg + .wui-picker__seg {
+  border-left: 1px solid var(--wui-divider-stroke-default);
+}
+.wui-picker--calendar {
+  min-width: 120px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 1px 11px;
+  text-align: left;
+}
+.wui-picker--calendar .wui-picker__glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  color: var(--wui-text-secondary);
+}
+.wui-popup.wui-flyout.wui-calendar-flyout {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Looping-selector flyout */
+.wui-pickerflyout {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--wui-surface-stroke-flyout);
+  border-radius: var(--wui-radius-overlay);
+  box-shadow: var(--wui-shadow-flyout);
+  color: var(--wui-text-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.wui-pickerflyout__columns {
+  position: relative;
+  display: flex;
+  height: 360px;
+}
+.wui-pickerflyout__highlight {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 36px;
+  margin-top: -18px;
+  border-radius: var(--wui-radius-control);
+  background-color: var(--wui-accent-default);
+  pointer-events: none;
+}
+.wui-loop {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  outline: none;
+  touch-action: none;
+}
+.wui-loop + .wui-loop {
+  border-left: 1px solid var(--wui-divider-stroke-default);
+}
+.wui-loop__item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-top: -20px;
+  padding-bottom: 1px;
+  white-space: nowrap;
+  transition:
+    transform var(--wui-dur-normal) var(--wui-ease-fast-out-slow-in),
+    color var(--wui-dur-fast) linear;
+}
+.wui-loop__item::before {
+  content: '';
+  position: absolute;
+  inset: 2px 4px;
+  border-radius: var(--wui-radius-control);
+  transition: background-color var(--wui-dur-faster) linear;
+  z-index: -1;
+}
+.wui-loop__item:not([data-current='true']):hover::before {
+  background-color: var(--wui-subtle-fill-secondary);
+}
+.wui-loop__item[data-current='true'] {
+  color: var(--wui-text-on-accent-primary);
+}
+.wui-loop:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--wui-focus-stroke-outer);
+}
+.wui-loop__nudge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: var(--wui-acrylic-fallback);
+  color: var(--wui-text-secondary);
+  cursor: default;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--wui-dur-faster) linear;
+}
+.wui-loop__nudge--up {
+  top: 0;
+}
+.wui-loop__nudge--down {
+  bottom: 0;
+}
+.wui-loop:hover .wui-loop__nudge {
+  opacity: 1;
+  pointer-events: auto;
+}
+.wui-loop__nudge:hover {
+  color: var(--wui-text-primary);
+}
+.wui-loop__nudge:active .wui-icon {
+  transform: scale(0.8);
+}
+.wui-pickerflyout__commands {
+  display: flex;
+  height: 41px;
+  padding: 4px;
+  gap: 4px;
+  border-top: 1px solid var(--wui-divider-stroke-default);
+}
+.wui-pickerflyout__commands > .wui-button {
+  flex: 1;
+}
+
+/* ================= ColorPicker ================= */
+.wui-colorpicker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 312px;
+  color: var(--wui-text-primary);
+}
+.wui-colorpicker__top {
+  display: flex;
+  gap: 12px;
+}
+.wui-colorpicker__spectrum {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  flex: none;
+  border-radius: var(--wui-radius-control);
+  cursor: crosshair;
+  touch-action: none;
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--wui-control-stroke-default);
+}
+.wui-colorpicker__spectrum[data-shape='ring'] {
+  border-radius: 50%;
+}
+.wui-colorpicker__spectrum:focus-visible {
+  outline: 2px solid var(--wui-focus-stroke-outer);
+  outline-offset: 2px;
+}
+.wui-colorpicker__cursor {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+.wui-colorpicker__cursor[data-dark='true'] {
+  border-color: #000;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.wui-colorpicker__preview {
+  flex: 1;
+  border-radius: var(--wui-radius-control);
+  box-shadow: inset 0 0 0 1px var(--wui-control-stroke-default);
+  background-image:
+    linear-gradient(var(--wui-cp-color), var(--wui-cp-color)),
+    repeating-conic-gradient(#cfcfcf 0 25%, #fff 0 50%);
+  background-size:
+    auto,
+    8px 8px;
+}
+.wui-colorpicker__slider {
+  position: relative;
+  height: 12px;
+  margin: 4px 0;
+  border-radius: 6px;
+  touch-action: none;
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--wui-control-stroke-default);
+}
+.wui-colorpicker__slider:focus-visible {
+  outline: 2px solid var(--wui-focus-stroke-outer);
+  outline-offset: 2px;
+}
+.wui-colorpicker__slider-thumb {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background-color: var(--wui-control-solid-fill-default);
+  box-shadow:
+    0 0 0 1px var(--wui-control-stroke-secondary),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+.wui-colorpicker__slider-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background-color: var(--wui-cp-thumb, var(--wui-accent-default));
+  transition: transform var(--wui-dur-fast) var(--wui-ease-fast-out-slow-in);
+}
+.wui-colorpicker__slider:hover .wui-colorpicker__slider-thumb::after {
+  transform: scale(1.167);
+}
+.wui-colorpicker__slider:active .wui-colorpicker__slider-thumb::after {
+  transform: scale(0.83);
+}
+.wui-colorpicker__inputs {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px 12px;
+  align-items: center;
+}
+.wui-colorpicker__channel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wui-colorpicker__channel > .wui-textbox {
+  width: 120px;
+  flex: none;
+}

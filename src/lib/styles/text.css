@@ -1,0 +1,278 @@
+/* ================= Field (header + control + description) ================= */
+.wui-field {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 0;
+  vertical-align: top;
+}
+.wui-field__description {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--wui-text-secondary);
+}
+
+/* ================= TextBox ================= */
+.wui-textbox {
+  display: flex;
+  align-items: stretch;
+  min-width: 64px;
+  min-height: var(--wui-control-height);
+  border-radius: var(--wui-radius-control);
+  background-color: var(--wui-control-fill-default);
+  --wui-elev-border: var(--wui-text-control-elevation-border);
+  color: var(--wui-text-primary);
+  cursor: text;
+  transition: background-color var(--wui-dur-faster) linear;
+}
+.wui-textbox:hover {
+  background-color: var(--wui-control-fill-secondary);
+}
+.wui-textbox:focus-within {
+  background-color: var(--wui-control-fill-input-active);
+  --wui-elev-border: var(--wui-control-stroke-default);
+}
+/* Focus: the bottom edge becomes a 2px accent line that follows the corner radius. */
+.wui-textbox::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border-bottom: 2px solid transparent;
+  pointer-events: none;
+}
+.wui-textbox:focus-within::after {
+  border-bottom-color: var(--wui-accent-default);
+}
+.wui-textbox__input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px 1px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: inherit;
+  caret-color: var(--wui-text-primary);
+  border-radius: inherit;
+}
+textarea.wui-textbox__input {
+  padding: 5px 10px 6px;
+  resize: none;
+  min-height: 64px;
+}
+.wui-textbox__input::placeholder {
+  color: var(--wui-text-secondary);
+  opacity: 1;
+}
+.wui-textbox:focus-within .wui-textbox__input::placeholder {
+  color: var(--wui-text-tertiary);
+}
+.wui-textbox__input::-ms-reveal,
+.wui-textbox__input::-ms-clear {
+  display: none;
+}
+.wui-textbox__input[type='search']::-webkit-search-cancel-button {
+  display: none;
+}
+.wui-textbox__buttons {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 3px 0 0;
+}
+.wui-textbox__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--wui-radius-control);
+  background-color: transparent;
+  color: var(--wui-text-secondary);
+  cursor: default;
+  transition: background-color var(--wui-dur-faster) linear;
+}
+.wui-textbox__btn:hover {
+  background-color: var(--wui-subtle-fill-secondary);
+}
+.wui-textbox__btn:active {
+  background-color: var(--wui-subtle-fill-tertiary);
+  color: var(--wui-text-tertiary);
+}
+.wui-textbox__btn:active .wui-icon {
+  transform: scale(0.86);
+}
+.wui-textbox__btn .wui-icon {
+  transition: transform var(--wui-dur-faster) linear;
+}
+.wui-textbox__prefix {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 10px;
+  color: var(--wui-text-secondary);
+}
+.wui-textbox[data-disabled='true'] {
+  background-color: var(--wui-control-fill-disabled);
+  --wui-elev-border: var(--wui-control-stroke-default);
+  color: var(--wui-text-disabled);
+  pointer-events: none;
+}
+.wui-textbox[data-disabled='true'] .wui-textbox__input::placeholder {
+  color: var(--wui-text-disabled);
+}
+
+/* ================= ComboBox ================= */
+.wui-combobox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 64px;
+  min-height: var(--wui-control-height);
+  margin: 0;
+  padding: 0 0 1px 11px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  color: var(--wui-text-primary);
+  background-color: var(--wui-control-fill-default);
+  border-radius: var(--wui-radius-control);
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  appearance: none;
+  transition:
+    background-color var(--wui-dur-faster) linear,
+    color var(--wui-dur-faster) linear;
+}
+.wui-combobox:hover {
+  background-color: var(--wui-control-fill-secondary);
+}
+.wui-combobox:active,
+.wui-combobox[aria-expanded='true'] {
+  background-color: var(--wui-control-fill-tertiary);
+  color: var(--wui-text-secondary);
+  --wui-elev-border: var(--wui-control-stroke-default);
+}
+.wui-combobox__value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wui-combobox__value[data-placeholder='true'] {
+  color: var(--wui-text-secondary);
+}
+.wui-combobox__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 32px;
+  color: var(--wui-text-secondary);
+}
+.wui-combobox__chevron .wui-icon {
+  transition: transform var(--wui-dur-fast) var(--wui-ease-fast-out-slow-in);
+}
+.wui-combobox:active .wui-combobox__chevron .wui-icon {
+  transform: translateY(2px);
+}
+.wui-combobox:disabled {
+  background-color: var(--wui-control-fill-disabled);
+  color: var(--wui-text-disabled);
+  --wui-elev-border: var(--wui-control-stroke-default);
+  pointer-events: none;
+}
+.wui-combobox:disabled .wui-combobox__value,
+.wui-combobox:disabled .wui-combobox__chevron {
+  color: var(--wui-text-disabled);
+}
+
+/* Drop-down surface shared by ComboBox and AutoSuggestBox */
+.wui-dropdown {
+  display: flex;
+  flex-direction: column;
+  max-height: min(504px, calc(100vh - 16px));
+  padding: 2px 0;
+  border: 1px solid var(--wui-surface-stroke-flyout);
+  border-radius: var(--wui-radius-overlay);
+  box-shadow: var(--wui-shadow-flyout);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.wui-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: none;
+  min-height: 36px;
+  margin: 2px 4px;
+  padding: 0 11px 1px;
+  border-radius: var(--wui-radius-control);
+  color: var(--wui-text-primary);
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color var(--wui-dur-faster) linear;
+}
+.wui-option:hover,
+.wui-option[data-active='true'] {
+  background-color: var(--wui-subtle-fill-secondary);
+}
+.wui-option:active {
+  background-color: var(--wui-subtle-fill-tertiary);
+  color: var(--wui-text-secondary);
+}
+.wui-option[aria-selected='true'] {
+  background-color: var(--wui-subtle-fill-secondary);
+}
+.wui-option[aria-selected='true']:hover {
+  background-color: var(--wui-subtle-fill-tertiary);
+}
+.wui-option[aria-selected='true']::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 16px;
+  margin-top: -8px;
+  border-radius: 1.5px;
+  background-color: var(--wui-accent-default);
+  transition: transform var(--wui-dur-fast) var(--wui-ease-fast-out-slow-in);
+}
+.wui-option[aria-selected='true']:active::before {
+  transform: scaleY(0.625);
+}
+.wui-option:focus-visible {
+  outline: 2px solid var(--wui-focus-stroke-outer);
+  outline-offset: -2px;
+}
+.wui-option[aria-disabled='true'] {
+  color: var(--wui-text-disabled);
+  pointer-events: none;
+}
+.wui-option__icon {
+  display: inline-flex;
+  margin-right: 12px;
+}
+
+/* ================= NumberBox ================= */
+.wui-numberbox__spin {
+  width: 32px;
+  height: 24px;
+}
