@@ -5,7 +5,8 @@
   line-height: 20px;
   font-weight: 400;
   color: var(--wui-text-primary);
-  -webkit-font-smoothing: antialiased;
+  /* No font-smoothing override: "antialiased" makes text thinner on macOS, and
+     Windows (ClearType) draws Segoe at full weight. */
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
 }
